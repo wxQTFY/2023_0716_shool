@@ -2,7 +2,7 @@
 	<section class="msite">
 		<!-- logo -->
 		<div class="logo">
-			<img src="./images/xiaoan.png">
+			<img class="logo_img" src="./images/xiaoan.png">
 		</div>
 		<!-- 轮播图 -->
 		<nav class="msite_nav clearFix">
@@ -31,25 +31,25 @@
 		<!-- 城市选择 -->
 		<div class="region_select ">
 			<van-form @submit="onSubmit">
-			  <van-cell-group inset>
-				  <div class="province">
+			  <van-cell-group class="col" inset>
+				  <div class="province row">
 				  	<span class="province_title">省份</span>
-						<van-field  v-model="result" :right-icon="require('./images/icon.png')" readonly name="picker"   placeholder="选择省份" @click="showPicker = true"/>
+					<van-field  v-model="result" :right-icon="require('./images/icon.png')" readonly name="picker"   placeholder="选择省份" @click="showPicker = true"/>
 				  </div>
-				  <div class="city ">
+				  <div class="city row">
 				  	<span class="city_title">城市</span>
 					<van-field v-model="result" :right-icon="require('./images/icon.png')" readonly name="picker"  placeholder="选择城市" @click="showPicker = true"/>
 				  </div>
-			      <div class="county ">
+			      <div class="county row">
 			      	<span class="county_title">区县</span>
 					<van-field v-model="result" :right-icon="require('./images/icon.png')" readonly name="picker"  placeholder="选择区县" @click="showPicker = true"/>
 			      </div>
 				  <div class="area ">
-				  	<span class="area_title ">您选择的区域为</span>
-				  	<van-field v-model="result" left-icon="location" :right-icon="require('./images/icon.png')" readonly name="picker"   placeholder="" @click="showPicker = true"/>
+				  	<span class="area_title row">您选择的区域为</span>
+				  	<van-field v-model="result" left-icon="location" :right-icon="require('./images/icon.png')" readonly name="picker"   placeholder="请选择您所在区域" @click="showPicker = true"/>
 				  </div>
 			  </van-cell-group>
-			  <div class="pay" style="margin: 16px;">
+			  <div class="pay" >
 			    <van-button class="pay_button"  round block type="primary" native-type="submit">
 			      <span>办理缴费</span>
 			    </van-button>
@@ -86,81 +86,81 @@
 	@import "../../common/css/mixins.css";
 
 	.msite {
-		width: 100%;
+		display: flex;
+		flex-direction: column;
+		-webkit-box-align: center;
+		align-items: center;
 	}
-
 	.logo {
-		position: fixed;
-		z-index: 100;
-		left: 0;
-		top: 40px;
-		width: 100%;
-		height: 60px;
+		width: 10rem;
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
 	}
-
-	.logo img {
+    .logo_img{
 		display: block;
-		margin: 0 auto;
-		width: 60px;
-		height: 60px
+		width:-2.826667rem;
+		height: 2.173333rem;
+		margin-top: 0.933333rem;
+		margin-bottom: 0.92rem;
 	}
 
 	/* 轮播图 */
 	.msite_nav {
-		padding-top: 110px;
-		height: 100%;
-		width: 100%;
-		background: #fff
+		width: 9.2rem;
 	}
 
 	.swiper {
-		width: 100%;
-		height: 100%
+		height: 3.946667rem;
+		width: 9.2rem;
+		border-radius: 0.106667rem;
+		margin-bottom: 0.4rem;
 	}
-
-	.swiper-wrapper {
-		width: 100%;
-		height: 100%;
-	}
-
-	.swiper-slide {
-		display: flex;
-		justify-content: center;
-		align-items: flex-start;
-		flex-wrap: wrap
-	}
-
 	.swiper-slide img {
 		display: inline-block;
-		width: 100%;
-		height: 100%
+		height: 3.946667rem;
+		width: 9.2rem;
 	}
-
 	.swiper-pagination,span.swiper-pagination-bullet-active {
 		background: #02a774;
 	}
 
 	/* 区域选择 */
-	.region_select {
-		width: 100%;
-		padding-top: 10px;
-		float: left;
-		background-color: #fff;
+	.region_select.van-form {
+		width: 9.2rem;
+		margin-bottom: 1.533333rem;
+	}
+	.col{
+		width: 9.2rem;
+		margin-bottom: 1.533333rem;;
+	}
+	.row{
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0.4rem;
+		flex: 1;
 	}
 	.region_select span{
-		color:darkgrey;
-		font-weight: bold;
+		    height: 0.52rem;
+		    font-size: .373333rem;
+		    font-family: PingFang SC-Medium,PingFang SC;
+		    font-weight: 500;
+		    color: #999;
+		    line-height: .44rem;
+		    margin-bottom: 0.266667rem;
 	}
 	.van-cell{
-		margin-top: 10px;
-		margin-bottom: 10px;
-		background-color: #EEEEEE;
-		border-radius: 5px;
+		height: 0.933333rem;
+		background: #f6f8fa;
+		align-items: center;
+		padding: 0 0.4rem;
+		border-radius: 0.106667rem;
 		color: black;
+		font-size: 0.32rem;
 	}
 	/* 覆写提示文字颜色 */
 	:root:root {
-	  --van-field-placeholder-text-color:#3C3C3C;  
+	  --van-field-placeholder-text-color:#ccc;  
 	  --van-button-default-color:red;
 	}
 	.province, .city, .area{
@@ -171,18 +171,10 @@
 		float: left;
 	}
     .city, .county{
-		width: 150px;
+		width: 168px;
 	}
 	.county{
 		float: right;
-	}
-	.pay_button{
-		--van-button-primary-background:#CCCCCC;
-		border: none;
-		margin-top: 50px;
-		color: #fff;
-		font-size: 20px;
-		font-family: "宋体";
 	}
 	.van-field__left-icon{
 		color: #3366CC;
@@ -191,18 +183,26 @@
 		color: #3366CC;
 	}
 	.van-icon__image{
-		width: 10px;
-		height: 10px;
+		width: 0.186667rem;
+		height: 0.186667rem;
+	
 	}
-	/* .province
-		   width 100px
-		   height 50px
-		   background-color #02a774
-		   .province_title
-		      font-size 22px
-		      color #fff
-	       .province_select
-		      width 150px
-			  height 20px
-			  background-color  #F5A100 	 */
+	.pay{
+		width: 9.2rem;
+		margin: 16px;
+	}
+	.pay_button{
+		height: 1.066667rem;
+		border: none;
+		background: #ccc;
+	}
+	.pay span{
+		height: 1.066667rem;
+		line-height: 1.066667rem;
+		font-size: .48rem;
+		font-family: PingFang SC-Medium,PingFang SC;
+		font-weight: 500;
+		color: #fff;
+		margin: 0;
+	}
 </style>
